@@ -1,0 +1,33 @@
+{
+  "name": "react-webpack-boilerplate",
+  "version": "0.1.0",
+  "description": "A boilerplate for running a Webpack-React workflow in Node.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server",
+    "postinstall": "node heroku",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "Mattia Toso",
+  "license": "MIT",
+  "dependencies": {
+    "babel-core": "^5.4.7",
+    "babel-loader": "^5.1.3",
+    "css-loader": "^0.14.4",
+    "express": "^4.12.4",
+    "file-loader": "^0.8.4",
+    "node-libs-browser": "^0.5.2",
+    "react": "^0.13.3",
+    "style-loader": "^0.12.3",
+    "url-loader": "^0.5.6",
+    "webpack": "^1.9.10"
+  },
+  "devDependencies": {
+    "http-proxy": "^1.11.1",
+    "webpack-dev-server": "^1.9.0"
+  }
+}
