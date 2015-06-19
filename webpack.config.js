@@ -4,10 +4,6 @@ var nodeModulesPath = path.resolve(__dirname, 'node_modules');
 var buildPath = path.resolve(__dirname, 'public', 'build');
 var appPath = path.resolve(__dirname, 'src', 'js', 'app.js');
 
-var deps = [
-    'react/dist/react.min.js'
-];
-
 var config = {
     context: __dirname,
     devtool: 'eval-source-map',
@@ -27,16 +23,13 @@ var config = {
         filename: 'bundle.js',
         publicPath: '/build/'
     },
-    resolve: {
-        alias: {}
-    },
     module: {
         noParse: [],
         loaders: [
             {
                 test: /\.js$/,
-                loader: 'babel',
-                exclude: [nodeModulesPath]
+                exclude: [nodeModulesPath],
+                loaders: ['react-hot', 'babel']
             },
             {
                 test: /\.css$/,
@@ -48,13 +41,10 @@ var config = {
             }
         ]
     },
-    plugins: [new Webpack.HotModuleReplacementPlugin()]
+    plugins: [
+        new Webpack.HotModuleReplacementPlugin(),
+        new Webpack.NoErrorsPlugin()
+    ]
 };
-
-deps.forEach(function(dep) {
-    var depPath = path.resolve(nodeModulesPath, dep);
-    config.resolve.alias[dep.split(path.sep)[0]] = depPath;
-    config.module.noParse.push(depPath);
-});
 
 module.exports = config;
